@@ -1,0 +1,46 @@
+﻿@page
+@model _FictionalProgrammers.Pages.Projects.CreateModel
+
+<form method="post">
+    <div class="border-bottom p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Create Project</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Project.Name"></label>
+            <input asp-for="@Model.Project.Name" class="form-control"/>
+            <span asp-validation-for="Project.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Project.CreatedDateTime"></label>
+            <input asp-for="@Model.Project.CreatedDateTime" class="form-control"/>
+            <span asp-validation-for="Project.CreatedDateTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Project.EndDateTime"></label>
+            <input asp-for="@Model.Project.EndDateTime" class="form-control"/>
+            <span asp-validation-for="Project.EndDateTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Project.Location"></label>
+            <input asp-for="@Model.Project.Location" class="form-control"/>
+            <span asp-validation-for="Project.Location" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Project.Category"></label>
+            <input asp-for="@Model.Project.Category" class="form-control"/>
+            <span asp-validation-for="Project.Category" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+        <a asp-page="Index" class="btn btn-secondary" style="width:159px;">Back To List</a>
+       
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

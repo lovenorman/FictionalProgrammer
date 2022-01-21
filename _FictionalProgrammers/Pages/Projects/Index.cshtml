@@ -1,0 +1,80 @@
+﻿@page
+@model _FictionalProgrammers.Pages.Projects.IndexModel
+
+
+
+<div class="container p-3">
+    <div class=row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Projects</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="create" class="btn btn-primary">
+                <i class="bi bi-pencil-square"></i> &nbsp; Create New Project
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <br /><br />    
+
+    <table class="table table-bordered table-striped" style="100%">
+        <thead>
+            <tr>
+                <th>
+                    Project ID
+                </th>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    End date
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Category
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model.Projects)
+            {
+                <tr>
+                    <td width=5%>
+                    @obj.Id
+                </td>
+                    <td width=20%>
+                    @obj.Name
+                </td>
+                <td width=20%>
+                    @obj.CreatedDateTime
+                </td>
+                <td width=20%>
+                    @obj.EndDateTime
+                </td>
+                <td width=15%>
+                    @obj.Location
+                </td>
+                <td width=30%>
+                    @obj.Category
+                </td>
+                <th>
+                    <div class="w-80 btn-group" role="group">
+                        <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                        <i class="bi bi-pencil-square">
+                        </i>Edit</a>
+                        <a asp-page="Delete" asp-route-id="@obj.Id"
+                        class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>Delete</a>
+                    </div>
+                </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
