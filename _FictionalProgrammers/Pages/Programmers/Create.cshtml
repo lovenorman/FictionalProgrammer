@@ -1,0 +1,52 @@
+﻿@page
+@model _FictionalProgrammers.Pages.Programmers.CreateModel
+
+
+<form method="post">
+    <div class="border-bottom p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Add Programmer</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Programmer.FirstName"></label>
+            <input asp-for="@Model.Programmer.FirstName" class="form-control"/>
+            <span asp-validation-for="Programmer.FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Programmer.LastName"></label>
+            <input asp-for="@Model.Programmer.LastName" class="form-control"/>
+            <span asp-validation-for="Programmer.LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Programmer.Competence"></label>
+            <input asp-for="@Model.Programmer.Competence" class="form-control"/>
+            <span asp-validation-for="Programmer.Competence" class="text-danger"></span>
+        </div>
+        @*<div class="mb-3">
+            <label asp-for="Programmer.Projects" class="control-label"></label>
+            <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.Project"><option value="" disabled selected>Select Project</option></select>
+            <span asp-validation-for="ProjectId" class="text-danger"></span>
+        </div>
+        @*<div class="mb-3">
+            <label asp-for="Project.Programmer" class="control-label"></label>
+            <select asp-for="ProgrammerId" class="form-control" asp-items="ViewBag.Programmer"><option value="" disabled selected>Select Programmer</option></select>
+            <span asp-validation-for="ProgrammerId" class="text-danger"></span>
+        </div>
+        @*<div class="mb-3">
+            <label asp-for="Programmer.Projects"></label>
+            <input asp-for="@Model.Programmer.Projects" class="form-control"/>
+            <span asp-validation-for="Programmer.Projects" class="text-danger"></span>
+        </div>*@
+        <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+        <a asp-page="Index" class="btn btn-secondary" style="width:159px;">Back To List</a>
+       
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

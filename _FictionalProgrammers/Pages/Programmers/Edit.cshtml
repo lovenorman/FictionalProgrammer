@@ -1,0 +1,46 @@
+﻿@page
+@model _FictionalProgrammers.Pages.Programmers.EditModel
+
+
+<form method="post">
+    <input hidden asp-for="Programmer.Id" />
+    <div class="border-bottom p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Edit Programmer</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Programmer.Id"></label>
+            <input asp-for="@Model.Programmer.Id" disabled class="form-control"/>
+        </div> 
+        <div class="mb-3">
+            <label asp-for="Programmer.FirstName"></label>
+            <input asp-for="@Model.Programmer.FirstName" class="form-control"/>
+            <span asp-validation-for="Programmer.FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Programmer.LastName"></label>
+            <input asp-for="@Model.Programmer.LastName" class="form-control"/>
+            <span asp-validation-for="Programmer.LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Programmer.Projects"></label>
+            <input asp-for="Programmer.Projects" class="form-control"/>
+            <span asp-validation-for="Programmer.Projects" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Programmer.Competence"></label>
+            <input asp-for="@Model.Programmer.Competence" class="form-control"/>
+            <span asp-validation-for="Programmer.Competence" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+        <a asp-page="Index" class="btn btn-secondary" style="width:159px;">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

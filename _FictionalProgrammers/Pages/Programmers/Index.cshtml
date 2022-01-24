@@ -22,16 +22,20 @@
         <thead>
             <tr>
                 <th>
+                    Id
+                </th>
+                <th>
                     First Name
                 </th>
                 <th>
                     Last Name
                 </th>
+                @*<th>
+                    Project
+                </th>*@
                 <th>
                     Competence
                 </th>
-                
-                
             </tr>
         </thead>
         <tbody>
@@ -41,17 +45,18 @@
                     <td width=5%>
                     @obj.Id
                 </td>
-                    <td width=20%>
+                    <td width=25%>
                     @obj.FirstName
                 </td>
-                <td width=20%>
+                <td width=25%>
                     @obj.LastName
                 </td>
-                <td width=20%>
+                @*<td width=20%>
+                    @obj.PrintAllProjects()
+                </td>*@
+                <td width=25%>
                     @obj.Competence
                 </td>
-                
-                
                 <th>
                     <div class="w-80 btn-group" role="group">
                         <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">

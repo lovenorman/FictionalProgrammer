@@ -1,4 +1,5 @@
 ﻿@page
+@using FictionalProgrammers.Models
 @model _FictionalProgrammers.Pages.Projects.CreateModel
 
 <form method="post">
@@ -24,15 +25,25 @@
             <span asp-validation-for="Project.EndDateTime" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="Project.Programmer" class="control-label"></label>
+            <select asp-for="ProgrammerId" class="form-control" asp-items="ViewBag.Programmer"><option value="" disabled selected>Select Programmer</option></select>
+            <span asp-validation-for="ProgrammerId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="Project.Location"></label>
-            <input asp-for="@Model.Project.Location" class="form-control"/>
+            <select asp-for="@Model.Project.Location" class="form-control" asp-items="Html.GetEnumSelectList<ProjectLocation>()"></select>
             <span asp-validation-for="Project.Location" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Project.Category"></label>
-            <input asp-for="@Model.Project.Category" class="form-control"/>
+            <select asp-for="@Model.Project.Category" class="form-control" asp-items="Html.GetEnumSelectList<ProjectCategory>()"></select>
             <span asp-validation-for="Project.Category" class="text-danger"></span>
         </div>
+        @*<div class="form-group">
+                <label asp-for="Book.Category" class="control-label"></label>
+                <select asp-for="Book.Category" class="form-control" asp-items="Html.GetEnumSelectList<BookCategory>()"></select>
+                <span asp-validation-for="Book.Category" class="text-danger"></span>
+            </div>*@
         <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
         <a asp-page="Index" class="btn btn-secondary" style="width:159px;">Back To List</a>
        

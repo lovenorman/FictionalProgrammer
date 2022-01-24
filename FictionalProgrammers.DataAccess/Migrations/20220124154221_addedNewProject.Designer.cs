@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FictionalProgrammers.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220121194047_addProgrammer1")]
-    partial class addProgrammer1
+    [Migration("20220124154221_addedNewProject")]
+    partial class addedNewProject
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,7 +46,7 @@ namespace FictionalProgrammers.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Programmers");
+                    b.ToTable("Programmer");
                 });
 
             modelBuilder.Entity("FictionalProgrammers.Models.Project", b =>
@@ -57,9 +57,8 @@ namespace FictionalProgrammers.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
@@ -67,9 +66,8 @@ namespace FictionalProgrammers.DataAccess.Migrations
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Location")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -78,6 +76,36 @@ namespace FictionalProgrammers.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Project");
+                });
+
+            modelBuilder.Entity("ProgrammerProject", b =>
+                {
+                    b.Property<int>("ProgrammerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProgrammerId", "ProjectsId");
+
+                    b.HasIndex("ProjectsId");
+
+                    b.ToTable("ProgrammerProject");
+                });
+
+            modelBuilder.Entity("ProgrammerProject", b =>
+                {
+                    b.HasOne("FictionalProgrammers.Models.Programmer", null)
+                        .WithMany()
+                        .HasForeignKey("ProgrammerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FictionalProgrammers.Models.Project", null)
+                        .WithMany()
+                        .HasForeignKey("ProjectsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

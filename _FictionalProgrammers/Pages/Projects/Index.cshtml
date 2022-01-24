@@ -14,6 +14,22 @@
             </a>
         </div>
     </div>
+<div class="dropdown indexDropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Sort by
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=titleasc">Name asc</a></li>
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=titledesc">Name desc</a></li>
+        @*<li><a Style="color:black"  asp-route-sortOrder="?sort=programmerasc">Programmer asc</a></li>
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=programmerdesc">Programmer desc</a></li>*@
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=categoryasc">Category asc</a></li>
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=categorydesc">Category desc</a></li>
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=locationasc">Location asc</a></li>
+        <li><a Style="color:black"  asp-route-sortOrder="?sort=locationdesc">Location desc</a></li>
+    </ul>
+</div>
 
     <br /><br />
 
@@ -23,10 +39,13 @@
         <thead>
             <tr>
                 <th>
-                    Project ID
+                    ID
                 </th>
                 <th>
-                    Project Name
+                    Name
+                </th>
+                <th>
+                    Programmer
                 </th>
                 <th>
                     Created
@@ -51,6 +70,9 @@
                 </td>
                     <td width=20%>
                     @obj.Name
+                </td>
+                <td width=20%>
+                    @obj.PrintAllProgrammers()
                 </td>
                 <td width=20%>
                     @obj.CreatedDateTime

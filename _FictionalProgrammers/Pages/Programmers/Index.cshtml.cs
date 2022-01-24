@@ -2,6 +2,7 @@ using FictionalProgrammers.DataAccess;
 using FictionalProgrammers.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace _FictionalProgrammers.Pages.Programmers
 {
@@ -17,7 +18,8 @@ namespace _FictionalProgrammers.Pages.Programmers
 
         public void OnGet()
         {
-            Programmers = _db.Programmer;
+
+            Programmers = _db.Programmer.Include(x => x.Projects).ToList();
         }
 
         //public class IndexModel : PageModel

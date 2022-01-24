@@ -23,10 +23,23 @@ namespace FictionalProgrammers.Models
 
         [Required]
         public string Competence { get; set; }
+
+        [DisplayName("Project")]
+        public List<Project> Projects { get; set; } = new List<Project>();
+
+        public string PrintAllProjects()
+        {
+            string project = string.Empty;
+            Projects.ForEach(p => project += $" {p.Name}");
+            return project;
+        }
+
+        //public List<Programmer_Project> Programmer_Projects { get; set; }
+
         //public ProgrCompetence Competence { get; set; }
 
         //public List<Project> Projects { get; set; } 
 
-        //public List<Progr_Project> Progr_Projects { get; set; }
+
     }
 }
